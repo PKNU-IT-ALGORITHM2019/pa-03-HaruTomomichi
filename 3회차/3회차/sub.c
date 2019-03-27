@@ -55,3 +55,64 @@ void insertion_sort() {
 		}
 	}
 }
+
+void merge_make(int data[], int p, int q, int r) {
+	int temp[MAX] = { 0 }, i = p, j = q + 1, k = 0;
+
+	while (i <= q && j <= r) {
+		if (data[i] <= data[j]) {
+			temp[k] = data[i];
+			i++, k++;
+		}
+		else {
+			temp[k] = data[j];
+			j++, k++;
+		}
+	}
+
+	if (i > q && j <= r) {
+		while (j <= r) {
+			temp[k] = data[j];
+			j++, k++;
+		}
+	}
+	else if (i <= q && j > r) {
+		while (i <= q) {
+			temp[k] = data[i];
+			i++, k++;
+		}
+	}
+
+	k = 0;
+
+	for (int i = p; i < r + 1; i++) {
+		data[i] = temp[k];
+		k++;
+	}
+}
+
+void merge_sort(int data[], int p, int r) {
+
+	if (p < r) {
+		int q = ((p + r)) / 2;
+		merge_sort(data, p, q);
+		merge_sort(data, q + 1, r);
+		merge_make(data, p, q, r);
+	}
+}
+
+void quick_sort(int data[], int p, int r) {
+
+}
+
+void partition_ver1(int data[], int p, int r) {
+
+}
+
+void partition_ver2(int data[], int p, int r) {
+
+}
+
+void partition_ver3(int data[], int p, int r) {
+
+}
