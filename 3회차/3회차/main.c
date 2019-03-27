@@ -57,7 +57,7 @@ void print3() {
 
 void print_all() {
 	printf("%8lf\t", random_start(1000));
-	printf("%8lf\t", reverse_start(1000));
+	printf("%8lf\n", reverse_start(1000));
 	printf("%8lf\t", random_start(10000));
 	printf("%8lf\t", reverse_start(10000));
 	printf("%8lf\t", random_start(100000));
@@ -110,7 +110,7 @@ double random_start(int temp) {
 
 		end = clock();
 
-		time +=((double)(end - start) / CLOCKS_PER_SEC);
+		time += ((double)(end - start) / CLOCKS_PER_SEC);
 	}
 
 	return time / 10.0;
