@@ -67,12 +67,13 @@ void print_all() {
 double random_start(int temp) {
 	N = temp;
 	double time = 0.0;
+	
+	for (int f = 0; f < 10; f++) {
 
-	for (int i = 0; i < N; i++) {
-		data[i] = rand() % N;
-	}
+		for (int i = 0; i < N; i++) {
+			data[i] = rand() % N;
+		}
 
-	for (int i = 0; i < 10; i++) {
 		clock_t start, end;
 		start = clock();
 
@@ -119,11 +120,12 @@ double reverse_start(int temp) {
 	N = temp;
 	double time = 0.0;
 
-	for (int i = 0; i < N; i++) {
-		data[i] = N - 1 - i;
-	}
+	for (int f = 0; f < 10; f++) {
 
-	for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < N; i++) {
+			data[i] = N - 1 - i;
+		}
+
 		clock_t start, end;
 		start = clock();
 
