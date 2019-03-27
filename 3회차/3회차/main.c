@@ -1,79 +1,82 @@
 #include "main.h"
+#include "sub.h"
 
 void main() {
+
+	print1();
+	print2();
+	print3();
+	
+	getchar();
+	getchar();
+}
+
+void print1() {
+
+	printf("\tRandom1000\tReverse1000\tRandom10000\tReverse10000\tRandom100000\tReverse100000\n");
+
+	status = 0;
+	printf("Bubble\t");
+	printf("%8lf\t%8lf\t", random_start(1000), reverse_start(1000));
+	printf("%8lf\t%8lf\t", random_start(10000), reverse_start(10000));
+	printf("%8lf\t%8lf\n", random_start(100000), reverse_start(100000));
+
+	status = 1;
+	printf("Selection\t");
+	printf("%8lf\t%8lf\t", random_start(1000), reverse_start(1000));
+	printf("%8lf\t%8lf\t", random_start(10000), reverse_start(10000));
+	printf("%8lf\t%8lf\n", random_start(100000), reverse_start(100000));
+
+	status = 2;
+	printf("Insertion\t");
+	printf("%8lf\t%8lf\t", random_start(1000), reverse_start(1000));
+	printf("%8lf\t%8lf\t", random_start(10000), reverse_start(10000));
+	printf("%8lf\t%8lf\n", random_start(100000), reverse_start(100000));
+}
+
+void print2() {
+
+	printf("\tRandom1000\tReverse1000\tRandom10000\tReverse10000\tRandom100000\tReverse100000\n");
+
+
+
+}
+
+void print3() {
+
+	printf("\tRandom1000\tReverse1000\tRandom10000\tReverse10000\tRandom100000\tReverse100000\n");
+
+
+
+}
+
+double reverse_start(int temp) {
+	N = temp;
+
+	for (int i = 0; i < N; i++) {
+		data[i] = N - 1 - i;
+	}
+
 	clock_t start, end;
-
 	start = clock();
-
-	// 여기에 실행 과정을 넣자
 
 	end = clock();
 
-	printf("실행 시간은 %lf초입니다", (double)(end - start) / CLOCKS_PER_SEC);
-
-	getchar();
-	getchar();
+	return (double)((end - start) / CLOCKS_PER_SEC);
 }
 
-void initailize_start() {
+double random_start(int temp) {
+	N = temp;
+
 	for (int i = 0; i < N; i++) {
-		clone[i] = data[i];
+		data[i] = rand() % N;
 	}
-}
 
-void initialize_end() {
-	for (int i = 0; i < N; i++) {
-		data[i] = clone[i];
-	}
-}
+	clock_t start, end;
+	start = clock();
 
-void swap(int i, int j) {
-	int temp = 0;
 
-	temp = data[i];
-	data[i] = data[j];
-	data[j] = temp;
-}
+	end = clock();
 
-void bubble_sort() {
-	for (int i = 0; i < N; i++) {
-		for (int j = i+1; j < N; j++) {
-			if (data[i] > data[j]) {
-				swap(i, j);
-			}
-		}
-	}
-}
-
-void selection_sort() {
-	int max_value = 0;
-
-	for (int i = N-1; i >0; i--) {
-		for (int j = 0; j < i; j++) {
-			if (j == 0) {
-				max_value = j;
-				continue;
-			}
-			else if (data[max_value] < data[j]) {
-				max_value = j;
-			}
-		} // 최대값을 찾는 과정
-		swap(max_value, i);
-	}
-}
-
-void insertion_sort() {
-	for (int i = 0; i < N; i++) {
-		int temp = data[i];
-
-		for (int j = i - 1; j >= 0; j--) {
-			if (data[j] > temp) {
-				data[j + 1] = data[j];
-			}
-			else {
-				data[j + 1] = temp;
-				break;
-			}
-		}
-	}
+	return (double)((end - start) / CLOCKS_PER_SEC);;
 }

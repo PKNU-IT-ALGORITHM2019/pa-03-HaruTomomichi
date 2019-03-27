@@ -6,16 +6,15 @@
 
 #define MAX 100000
 
-int data[MAX] = { 0 }, N = 0, clone[MAX] = { 0 };
+int status = 0;
+// 0 : bubble / 1 : selection / 2 : insertion / 3 : Merge / 4 : quick / 5 : Heap / 6 : library
 
-void initialize_start();
+void print1();
 
-void initialize_end();
+void print2();
 
-void swap(int i, int j);
+void print3();
 
-void bubble_sort(); // 우향 / 최소값 정렬
+double reverse_start();
 
-void selection_sort(); // 좌향 / 최대값 정렬
-
-void insertion_sort(); // 비교값은 우향 / 범위는 좌향 / 최대값 정렬, 수정 필요
+double random_start();
