@@ -1,6 +1,5 @@
+#include "main.h"
 #include "sub.h"
-
-int data[MAX] = { 0 }, N = 0;
 
 void swap(int i, int j) {
 	int temp = 0;

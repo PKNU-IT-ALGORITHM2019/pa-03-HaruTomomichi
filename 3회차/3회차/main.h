@@ -1,13 +1,15 @@
 #pragma once
 #include <stdio.h>
+#include <stdlib.h>
 #include <time.h>
 
 #pragma warning(disable:4996)
 
-#define MAX 100000
+#define MAX 1000000
 
-int status = 0;
-// 0 : bubble / 1 : selection / 2 : insertion / 3 : Merge / 4 : quick / 5 : Heap / 6 : library
+extern int data[MAX], N, status;
+// 0 : bubble / 1 : selection / 2 : insertion / 3 : Merge
+// 4 : quick / 5 : Heap / 6 : library
 
 void print1();
 
@@ -15,6 +17,8 @@ void print2();
 
 void print3();
 
-double reverse_start();
+void print_all();
 
-double random_start();
+double reverse_start(int temp);
+
+double random_start(int temp);

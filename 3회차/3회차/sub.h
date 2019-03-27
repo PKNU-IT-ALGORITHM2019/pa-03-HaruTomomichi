@@ -1,8 +1,6 @@
 #pragma once
 #include <stdio.h>
 
-#define MAX 100000
-
 void swap(int i, int j);
 
 void bubble_sort(); // 우향 / 최소값 정렬
