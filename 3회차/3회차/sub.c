@@ -102,17 +102,84 @@ void merge_sort(int data[], int p, int r) {
 }
 
 void quick_sort(int data[], int p, int r) {
+	int q = 0;
 
+	if (p < r) {
+		switch (status)
+		{
+		case 4: {
+			q = partition_ver1(data, p, r);
+			break;
+		}
+		case 5: {
+			q = partition_ver2(data, p, r);
+			break;
+		}
+		case 6: {
+			q = partition_ver3(data, p, r);
+			break;
+		}
+		}
+		quick_sort(data, p, q - 1);
+		quick_sort(data, q + 1, r);
+	}
 }
 
-void partition_ver1(int data[], int p, int r) {
+int partition_ver1(int data[], int p, int r) {
+	int x = data[r];
+	int i = p - 1;
 
+	for (int j = p; j < r; j++) {
+		if (data[j] <= x) {
+			i++;
+			swap(i, j);
+		}
+	}
+	swap(i + 1, r);
+	return i + 1;
 }
 
-void partition_ver2(int data[], int p, int r) {
+int partition_ver2(int data[], int p, int r) {
+	int temp[3] = { p,(p + r) / 2,r };
 
+	for (int i = 0; i < 3; i++) {
+		for (int j = i + 1; j < 3; j++) {
+			if (data[temp[i]] > data[temp[j]]) {
+				int value = temp[i];
+				temp[i] = temp[j];
+				temp[j] = value;
+			}
+		}
+	}
+
+	swap(r, temp[1]);
+
+	int x = data[r];
+	int i = p - 1;
+
+	for (int j = p; j < r; j++) {
+		if (data[j] <= x) {
+			i++;
+			swap(i, j);
+		}
+	}
+	swap(i + 1, r);
+	return i + 1;
 }
 
-void partition_ver3(int data[], int p, int r) {
+int partition_ver3(int data[], int p, int r) {
+	int temp = (rand() % (r - p + 1)) + p;
+	swap(r, temp);
 
+	int x = data[r];
+	int i = p - 1;
+
+	for (int j = p; j < r; j++) {
+		if (data[j] <= x) {
+			i++;
+			swap(i, j);
+		}
+	}
+	swap(i + 1, r);
+	return i + 1;
 }

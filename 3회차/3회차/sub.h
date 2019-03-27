@@ -15,8 +15,8 @@ void merge_sort(int data[], int p, int r);
 
 void quick_sort(int data[], int p, int r);
 
-void partition_ver1(int data[], int p, int r);
+int partition_ver1(int data[], int p, int r);
 
-void partition_ver2(int data[], int p, int r);
+int partition_ver2(int data[], int p, int r);
 
-void partition_ver3(int data[], int p, int r);
+int partition_ver3(int data[], int p, int r);
