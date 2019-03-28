@@ -1,6 +1,8 @@
 #include "main.h"
 #include "sub.h"
 
+int make_merge_data[MAX] = { 0 };
+
 void swap(int i, int j) {
 	int temp = 0;
 
@@ -10,7 +12,7 @@ void swap(int i, int j) {
 }
 
 void bubble_sort() {
-	for (int i = 0; i < N; i++) {
+	for (int i = 0; i < N-1; i++) {
 		for (int j = i + 1; j < N; j++) {
 			if (data[i] > data[j]) {
 				swap(i, j);
@@ -57,37 +59,34 @@ void insertion_sort() {
 }
 
 void merge_make(int data[], int p, int q, int r) {
-	int temp[MAX] = { 0 }, i = p, j = q + 1, k = 0;
+	int i = p, j = q + 1, k = p;
 
 	while (i <= q && j <= r) {
 		if (data[i] <= data[j]) {
-			temp[k] = data[i];
+			make_merge_data[k] = data[i];
 			i++, k++;
 		}
 		else {
-			temp[k] = data[j];
+			make_merge_data[k] = data[j];
 			j++, k++;
 		}
 	}
 
 	if (i > q && j <= r) {
 		while (j <= r) {
-			temp[k] = data[j];
+			make_merge_data[k] = data[j];
 			j++, k++;
 		}
 	}
 	else if (i <= q && j > r) {
 		while (i <= q) {
-			temp[k] = data[i];
+			make_merge_data[k] = data[i];
 			i++, k++;
 		}
 	}
 
-	k = 0;
-
 	for (int i = p; i < r + 1; i++) {
-		data[i] = temp[k];
-		k++;
+		data[i] = make_merge_data[i];
 	}
 }
 
@@ -142,7 +141,7 @@ int partition_ver1(int data[], int p, int r) {
 int partition_ver2(int data[], int p, int r) {
 	int temp[3] = { p,(p + r) / 2,r };
 
-	for (int i = 0; i < 3; i++) {
+	for (int i = 0; i < 2; i++) {
 		for (int j = i + 1; j < 3; j++) {
 			if (data[temp[i]] > data[temp[j]]) {
 				int value = temp[i];

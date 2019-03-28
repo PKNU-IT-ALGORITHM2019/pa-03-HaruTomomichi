@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <stdbool.h>
 
 #pragma warning(disable:4996)
 
@@ -19,7 +20,7 @@ void print3();
 
 void print_all();
 
-double random_start(int temp);
+double test_start(int temp);
 
-double reverse_start(int temp);
+void test_make();
 

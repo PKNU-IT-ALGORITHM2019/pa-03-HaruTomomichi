@@ -3,6 +3,8 @@
 
 int data[MAX] = { 0 }, N = 0, status = 0;
 
+bool test = true; // true이면 랜덤 / false라면 revers
+
 void main() {
 
 	srand((unsigned)time(NULL));
@@ -56,23 +58,32 @@ void print3() {
 }
 
 void print_all() {
-	printf("%8lf\t", random_start(1000));
-	printf("%8lf\n", reverse_start(1000));
-	printf("%8lf\t", random_start(10000));
-	printf("%8lf\t", reverse_start(10000));
-	printf("%8lf\t", random_start(100000));
-	printf("%8lf\n", reverse_start(100000));
+
+	printf("%8lf\t", test_start(1000));
+
+	test = false;
+	printf("%8lf\t", test_start(1000));
+
+	test = true;
+	printf("%8lf\t", test_start(10000));
+
+	test = false;
+	printf("%8lf\t", test_start(10000));
+
+	test = true;
+	printf("%8lf\t", test_start(100000));
+
+	test = false;
+	printf("%8lf\n", test_start(100000));
 }
 
-double random_start(int temp) {
+double test_start(int temp) {
 	N = temp;
 	double time = 0.0;
 	
 	for (int f = 0; f < 10; f++) {
 
-		for (int i = 0; i < N; i++) {
-			data[i] = rand() % N;
-		}
+		test_make();
 
 		clock_t start, end;
 		start = clock();
@@ -116,54 +127,15 @@ double random_start(int temp) {
 	return time / 10.0;
 }
 
-double reverse_start(int temp) {
-	N = temp;
-	double time = 0.0;
-
-	for (int f = 0; f < 10; f++) {
-
+void test_make() {
+	if (test) {
 		for (int i = 0; i < N; i++) {
-			data[i] = N - 1 - i;
+			data[i] = rand() % N;
 		}
-
-		clock_t start, end;
-		start = clock();
-
-		switch (status) {
-		case 0: {
-			bubble_sort();
-			break;
-		}
-		case 1: {
-			selection_sort();
-			break;
-		}
-		case 2: {
-			insertion_sort();
-			break;
-		}
-		case 3: {
-			merge_sort(data, 0, N - 1);
-			break;
-		}
-		case 4: {
-			quick_sort(data, 0, N - 1);
-			break;
-		}
-		case 5: {
-			quick_sort(data, 0, N - 1);
-			break;
-		}
-		case 6: {
-			quick_sort(data, 0, N - 1);
-			break;
-		}
-		}
-
-		end = clock();
-
-		time += ((double)(end - start) / CLOCKS_PER_SEC);
 	}
-
-	return time / 10.0;
+	else {
+		for (int i = 0; i < N; i++) {
+			data[i] = N - i;
+		}
+	}
 }
